@@ -1,8 +1,0 @@
-[17:38:42 2025-08-25] FETCHING Version 2.41.0
-[17:38:42 2025-08-25] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.41.0/spicetify-2.41.0-darwin-arm64.tar.gz
-[17:38:43 2025-08-25] EXTRACTING /Users/dwait/.spicetify/spicetify.tar.gz
-[17:38:43 2025-08-25] SETTING EXECUTABLE PERMISSIONS TO /Users/dwait/.spicetify/spicetify
-[17:38:43 2025-08-25] REMOVING /Users/dwait/.spicetify/spicetify.tar.gz
-[17:38:43 2025-08-25] spicetify path already set in /Users/dwait/.config/fish/config.fish, continuing...
-[17:38:43 2025-08-25] spicetify v2.41.0 was installed successfully to /Users/dwait/.spicetify
-[17:38:43 2025-08-25] Run 'spicetify --help' to get started
