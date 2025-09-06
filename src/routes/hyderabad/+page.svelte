@@ -1,217 +1,62 @@
 <script lang="ts">
 	/**
-	 * Enhanced Red Sea Daydream Event Site
-	 * Features: Countdown timer, interactive schedule, social media integration,
-	 * enhanced animations, mobile responsiveness, and more engaging content
+	 * This is the template site! Create a copy of this folder (src/routes/example)
+	 * and rename it to whatever you want your URL to be.
+	 * 
+	 * Then, configure the event name, location, and schedule below:
 	 */
 
-	// Configuration - Enhanced with more details
-	const eventName = "Red Sea";
-	const eventLocation = "Red Sea City";
-	const eventAddress = "Sun Rise International School, Red Sea Governorate";
-	const signupLink = "https://forms.hackclub.com/daydream-sign-up?event=recfLqydkliPcUYoe";
-	const directionsURL = "https://maps.app.goo.gl/S3k6yH2JQqCX5fgL6";
-	const contactLink = "mailto:redsea.stem.hackclub@gmail.com";
+	// Configuration - Put your information here!
+	const eventName = "Hyderabad"; // This should be the name of your event WITHOUT "Daydream" at the start
+	const eventLocation = "Hyderabad, Telangana";
+	const eventAddress = ""; // Leave this empty if you don't want an address
+	const signupLink = "https://forms.hackclub.com/daydream-sign-up?event=reccBt5x14OKtud8m"; // Get your custom sign up link from this page: https://airtable.com/apppg7RHZv6feM66l/shr4kFqURo8fMIRie
+	// These two are optional-- leave them empty if you don't have anything!
+	const directionsURL = ""
+	const contactLink = ""
 	
-	// Event dates and times - 12-hour event
-	const eventStartDate = new Date('2025-09-27T10:00:00+02:00'); // Egypt timezone
-	const eventEndDate = new Date('2025-09-27T22:00:00+02:00'); // Same day, 12 hours
-	
-	// Social Media Links
-	const socialLinks = {
-		instagram: "https://instagram.com/hackclub",
-		twitter: "https://twitter.com/hackclub",
-		discord: "https://discord.gg/hackclub",
-		slack: "https://hackclub.com/slack"
-	};
-	
-	// Enhanced Sponsors Configuration
-	const sponsorsEnabled = true; // Hide sponsors for now but keep call to action
-			const sponsors = [
-		{ 
-			image: "/red-sea/jukebox.png", 
-			name: "Jukebox Print", 
-			url: "https://www.jukeboxprint.com/custom-stickers",
-			tier: "silver"
-		}
+	// Sponsors Configuration - disable this if you don't have any sponsors to display!
+	const sponsorsEnabled = false; // Set to false to hide the entire sponsors section
+	const sponsors = [
+		{ image: "/example/logo1.png", name: "Sponsor 1", url: "https://example1.com" },
+		{ image: "/example/logo2.png", name: "Sponsor 2", url: "https://example2.com" },
+		{ image: "/example/logo3.png", name: "Sponsor 3", url: "https://example3.com" },
+		{ image: "/example/logo4.png", name: "Sponsor 4", url: "https://example4.com" },
+		{ image: "/example/logo5.png", name: "Sponsor 5", url: "https://example5.com" },
+		{ image: "/example/logo6.png", name: "Sponsor 6", url: "https://example6.com" },
+		{ image: "/example/logo7.png", name: "Sponsor 7", url: "https://example7.com" }
 	];
 	
-	// Enhanced Schedule - 12-hour single day event with 2 workshops
-	const scheduleData: { 
-		title: string; 
-		date: string;
-		items: { 
-			event: string; 
-			time: string; 
-			description?: string;
-			speaker?: string;
-			location?: string;
-			type?: 'workshop' | 'activity' | 'break' | 'presentation';
-		}[] 
-	}[] = [
+	// Schedule Configuration - You don't need to use this exact schedule, this is just an example!
+	const scheduleData: { title: string; items: { event: string; time: string; }[] }[] = [
 		{
 			title: "Saturday, September 27th",
-			date: "2025-09-27",
 			items: [
-				{ 
-					event: "Doors Open & Registration", 
-					time: "9:30 AM",
-					description: "Check-in, get your swag bag, and meet fellow participants",
-					location: "Main Hall",
-					type: "activity"
-				},
-				{ 
-					event: "Opening Ceremony", 
-					time: "10:00 AM",
-					description: "Welcome speech, event overview, and team formation",
-					location: "Main Auditorium",
-					type: "presentation"
-				},
-				{ 
-					event: "Icebreaker Activities", 
-					time: "10:30 AM",
-					description: "Fun games to get to know your fellow hackers",
-					location: "Main Hall",
-					type: "activity"
-				},
-				{ 
-					event: "Game Development Workshop 1", 
-					time: "11:00 AM",
-					description: "Introduction to game development basics and tools",
-					speaker: "TBA",
-					location: "Workshop Room A",
-					type: "workshop"
-				},
-				{ 
-					event: "Lunch Break", 
-					time: "12:30 PM",
-					description: "Delicious food and networking time",
-					location: "Dining Area",
-					type: "break"
-				},
-				{ 
-					event: "Game Development Workshop 2", 
-					time: "2:00 PM",
-					description: "Advanced game mechanics and programming concepts",
-					speaker: "TBA",
-					location: "Workshop Room A",
-					type: "workshop"
-				},
-				{ 
-					event: "Team Building & Brainstorming", 
-					time: "3:30 PM",
-					description: "Form teams and start brainstorming your game ideas",
-					location: "Main Hall",
-					type: "activity"
-				},
-				{ 
-					event: "Snack Break", 
-					time: "5:00 PM",
-					description: "Refreshments and team discussions",
-					location: "Lounge Area",
-					type: "break"
-				},
-				{ 
-					event: "Development & Mentorship", 
-					time: "5:30 PM",
-					description: "Build your game with mentor support and guidance",
-					location: "Main Hall",
-					type: "activity"
-				},
-				{ 
-					event: "Dinner", 
-					time: "7:00 PM",
-					description: "Delicious dinner and team bonding",
-					location: "Dining Area",
-					type: "break"
-				},
-				{ 
-					event: "Final Development Sprint", 
-					time: "8:00 PM",
-					description: "Last push to complete your game project",
-					location: "Main Hall",
-					type: "activity"
-				},
-				{ 
-					event: "Project Showcase & Awards", 
-					time: "9:30 PM",
-					description: "Present your game and celebrate achievements",
-					location: "Main Auditorium",
-					type: "presentation"
-				},
-				{ 
-					event: "Closing Ceremony", 
-					time: "10:30 PM",
-					description: "Final remarks and future opportunities",
-					location: "Main Auditorium",
-					type: "presentation"
-				}
+				{ event: "Registration & Breakfast", time: "8:00-9:00" },
+				{ event: "Opening Ceremony", time: "9:00-9:45" },
+				{ event: "Hacking Begins", time: "10:00-01:00" },
+				{ event: "Lunch", time: "01:00-02:00"},
+				{ event: "Workshop 1", time: "02:00-03:00" },
+				{ event: "Hacking Session", time: "03:00-06:00" },
+				{ event: "Workshop 2", time: "06:00-07:00" },
+				{ event: "Dinner", time: "07:00-08:00" },	
+			]
+		},
+		{
+			title: "Sunday, September 28th",
+			items: [
+				{ event: "Breakfast", time: "8:00-9:00" },
+				{ event: "Hacking Begins", time: "09:00-12:00" },
+				{ event: "Lunch", time: "12:00-01:00" },
+				{ event: "Workshop 3", time: "01:00:02:00" },
+				{ event: "Project Submission", time: "04:00-05:00" },
+				{ event: "Judging & Networking", time: "05:00-06:30" },
+				{ event: "Closing Ceremony + Prizes", time: "06:30-07:30" },
+				{ event: "Dinner & Farewell", time: "07:30-08:00" },
 			]
 		}
 	];
 
-	// Countdown timer state
-	let timeLeft = {
-		days: 0,
-		hours: 0,
-		minutes: 0,
-		seconds: 0
-	};
-	
-	// Enhanced countdown with progress
-	let countdownProgress = 0;
-	let totalSecondsUntilEvent = 0;
-	let elapsedSeconds = 0;
-	
-	// Interactive features state
-	let showCountdown = true;
-	let showSocialLinks = false;
-	let currentWorkshop: number | null = null;
-	let showFloatingMenu = false;
-	let showBackToTop = false;
-	
-	// Notification system
-	let showNotification = false;
-	let notificationMessage = "";
-	let notificationType = "info";
-	
-	function showNotificationMessage(message: string, type: "info" | "success" | "warning" = "info") {
-		notificationMessage = message;
-		notificationType = type;
-		showNotification = true;
-		
-		setTimeout(() => {
-			showNotification = false;
-		}, 5000);
-	}
-	
-	// Enhanced dice functionality
-	let showDice = false;
-	let diceNumbers = [1, 1, 1];
-	let showDone = false;
-	let isRolling = false;
-	let ideaText = "";
-	let isTyping = false;
-	let ideaHistory: string[] = [];
-	
-	// Scroll handling
-	function handleScroll() {
-		showBackToTop = window.scrollY > 300;
-	}
-	
-	function scrollToTop() {
-		window.scrollTo({ top: 0, behavior: 'smooth' });
-	}
-	
-	// Particle system
-	let particles: Array<{ id: number; x: number; y: number; opacity: number; rotation: number; velocityY: number; velocityX: number; scale: number }> = [];
-	let particleIdCounter = 0;
-	let particleContainer: HTMLElement;
-	let isTabVisible = true;
-	const particleSpeedScale = 0.6;
-
-	// Video popup
-	let showVideoPopup = false;
 	
 	import { onMount } from "svelte";
 	import { gsap } from "gsap";
@@ -219,8 +64,8 @@
 	import Ticker from "$lib/components/Ticker.svelte";
 	import Footer from "$lib/components/Footer.svelte";
 	import ParticipantSignUp from "$lib/components/ParticipantSignUp.svelte";
-	import EnhancedFeatures from "$lib/components/RedSeaFeatures.svelte";
 	import { page } from '$app/stores';
+	
 	
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -255,227 +100,33 @@ Dubai
 San Francisco
 Minneapolis
 Seattle
-Singapore
+Signapore
 Sydney
-Mumbai
-Red Sea`.split("\n")
+Mumbai`.split("\n")
 
-	// Enhanced countdown timer function with progress
-	function updateCountdown() {
-		const now = new Date().getTime();
-		const distance = eventStartDate.getTime() - now;
-		
-		if (distance > 0) {
-			timeLeft = {
-				days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-				hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-				minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-				seconds: Math.floor((distance % (1000 * 60)) / 1000)
-			};
-			
-			// Calculate progress for visual indicator
-			const totalDaysUntilEvent = Math.ceil(distance / (1000 * 60 * 60 * 24));
-			const daysSinceAnnouncement = Math.ceil((now - new Date('2024-01-01').getTime()) / (1000 * 60 * 60 * 24));
-			const totalDaysFromAnnouncement = Math.ceil((eventStartDate.getTime() - new Date('2024-01-01').getTime()) / (1000 * 60 * 60 * 24));
-			
-			countdownProgress = Math.max(0, Math.min(100, ((totalDaysFromAnnouncement - totalDaysUntilEvent) / totalDaysFromAnnouncement) * 100));
-		} else {
-			timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-			countdownProgress = 100;
-			showCountdown = false;
-		}
-	}
-
-	// Enhanced idea generation with history
-	async function fetchIdea(): Promise<string> {
-		let attempt = 0;
-		const maxAttempts = 5;
-		
-		while (attempt < maxAttempts) {
-			try {
-				const response = await fetch('/api/idea', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					}
-				});
-				
-				if (!response.ok) {
-					if (response.status === 500) {
-						throw new Error(`Server error: ${response.status}`);
-					} else {
-						return "How about a game where you collect magical crystals to save a mysterious floating world?";
-					}
-				}
-				
-				const data = await response.json();
-				return data.idea;
-			} catch (error) {
-				attempt++;
-				console.warn(`Attempt ${attempt} failed:`, error);
-				
-				if (attempt >= maxAttempts) {
-					return "How about a game where you collect magical crystals to save a mysterious floating world?";
-				}
-				
-				await new Promise(resolve => setTimeout(resolve, 1000));
-			}
-		}
-		
-		return "How about a game where you collect magical crystals to save a mysterious floating world?";
-	}
-
-	async function typeText(text: string) {
-		isTyping = true;
-		ideaText = "";
-		
-		for (let i = 0; i <= text.length; i++) {
-			ideaText = text.slice(0, i);
-			await new Promise(resolve => setTimeout(resolve, 20));
-		}
-		
-		isTyping = false;
-	}
-
-	async function dreamIdea() {
-		if (isRolling) return;
-		
-		isRolling = true;
-		showDone = false;
-		showDice = true;
-		ideaText = "";
-		
-		const startTime = Date.now();
-		const minDuration = 1000;
-		let fetchComplete = false;
-		let fetchResult: string = "";
-		
-		// Start fetch and dice animation concurrently
-		const fetchPromise = fetchIdea().then(result => {
-			fetchResult = result;
-			fetchComplete = true;
-			return result;
-		});
-		
-		// Dice animation loop
-		const dicePromise = (async () => {
-			while (true) {
-				const elapsed = Date.now() - startTime;
-				
-				if (elapsed >= minDuration && fetchComplete) {
-					break;
-				}
-				
-				diceNumbers = [
-					Math.floor(Math.random() * 6) + 1,
-					Math.floor(Math.random() * 6) + 1,
-					Math.floor(Math.random() * 6) + 1
-				];
-				
-				await new Promise(resolve => setTimeout(resolve, 100));
-			}
-		})();
-		
-		await Promise.all([fetchPromise, dicePromise]);
-		
-		showDone = false;
-		showDice = false;
-		isRolling = false;
-		
-		// Add to history and start typing
-		ideaHistory.unshift(fetchResult);
-		if (ideaHistory.length > 5) ideaHistory.pop();
-		
-		await typeText(fetchResult);
-	}
-
-	function openVideoPopup() {
-		if (window.innerWidth <= 768) {
-			window.open('https://www.youtube.com/watch?v=O44y8TeJrNE', '_blank');
-		} else {
-			showVideoPopup = true;
-		}
-	}
-
-	function closeVideoPopup() {
-		showVideoPopup = false;
-	}
-
-	// Enhanced particle system
-	function createParticle() {
-		if (!particleContainer || !isTabVisible) return;
-		
-		const buttons = document.querySelectorAll('a[href="https://forms.hackclub.com/daydream-stickers"]');
-		let button = null;
-		
-		for (const btn of buttons) {
-			const styles = window.getComputedStyle(btn);
-			if (styles.display !== 'none') {
-				button = btn;
-				break;
-			}
-		}
-		
-		if (!button) return;
-		
-		const buttonRect = button.getBoundingClientRect();
-		const containerRect = particleContainer.getBoundingClientRect();
-		
-		const edgeInset = 16;
-		const spawnWidth = buttonRect.width - (edgeInset * 2);
-		const spawnOffset = edgeInset;
-		
-		const particle = {
-			id: particleIdCounter++,
-			x: buttonRect.left - containerRect.left + spawnOffset + Math.random() * spawnWidth,
-			y: buttonRect.top + buttonRect.height / 2 - containerRect.top,
-			opacity: 1,
-			rotation: Math.random() * 360,
-			velocityY: (0.5 + Math.random() * 0.3) * particleSpeedScale,
-			velocityX: 0,
-			scale: 0.7 + Math.random() * 0.5
-		};
-		
-		particles = [...particles, particle];
-	}
-
-	function updateParticles() {
-		if (!isTabVisible) return;
-		
-		particles = particles.map(particle => ({
-			...particle,
-			x: particle.x + particle.velocityX,
-			y: particle.y + particle.velocityY,
-			opacity: particle.opacity - 0.01,
-			rotation: particle.rotation + 2,
-			scale: particle.scale
-		})).filter(particle => particle.opacity > 0);
-	}
-
-	function animateParticles() {
-		updateParticles();
-		requestAnimationFrame(animateParticles);
-	}
-
-	function handleVisibilityChange() {
-		isTabVisible = !document.hidden;
-	}
-
-	// Enhanced path creation functions (keeping existing ones)
 	function createSmoothPath(points: Array<{ x: number; y: number }>) {
 		if (points.length < 2) return "";
 		
-		const tension = 1.2;
-		const pointAngles = [0, 0, -10, -10, -10, 0, 0];
+		// Create smooth curves that flow horizontally through points
+		const tension = 1.2; // Increased control point distance for smoother curves
+		
+		// Configurable angles for each point (in degrees)
+		// 0 = horizontal, positive = upward slope, negative = downward slope
+		const pointAngles = [0, 0, -10, -10, -10, 0, 0]; // Point 0: center, Point 0.5: left curve, Points 1-4: cards, Point 5: final card
+		
+		// Generate control points for smooth curves
 		const controlPoints = [];
 		
 		for (let i = 0; i < points.length; i++) {
 			let cp1, cp2;
-			const angleRadians = (pointAngles[i] || 0) * Math.PI / 180;
+			const angleRadians = (pointAngles[i] || 0) * Math.PI / 180; // Convert to radians
 			
 			if (i === 0) {
+				// First point - start flowing at specified angle
 				const next = points[i + 1];
 				const distance = Math.sqrt(Math.pow(next.x - points[i].x, 2) + Math.pow(next.y - points[i].y, 2));
+				
+				// Start at specified angle - extend further
 				const controlDistance = distance * tension * 0.8;
 				
 				cp1 = { x: points[i].x, y: points[i].y };
@@ -484,33 +135,43 @@ Red Sea`.split("\n")
 					y: points[i].y + Math.sin(angleRadians) * controlDistance
 				};
 			} else if (i === points.length - 1) {
+				// Last point - simple straight-down vertical approach
 				const prev = points[i - 1];
 				const distance = Math.sqrt(Math.pow(points[i].x - prev.x, 2) + Math.pow(points[i].y - prev.y, 2));
-				const controlDistance = distance * tension * 0.4;
 				
+				// Create a simple curve that transitions smoothly to vertical
+				const controlDistance = distance * tension * 0.4; // Reduced for simpler curve
+				
+				// First control point - minimal horizontal extension from previous point
 				cp1 = { 
-					x: prev.x + (points[i].x - prev.x) * 0.7,
-					y: prev.y + (points[i].y - prev.y) * 0.3
+					x: prev.x + (points[i].x - prev.x) * 0.7, // Move most of the way horizontally
+					y: prev.y + (points[i].y - prev.y) * 0.3   // Move only slightly vertically
 				};
 				
+				// Second control point - directly above target for straight-down approach
 				cp2 = { 
-					x: points[i].x,
-					y: points[i].y - controlDistance * 0.5
+					x: points[i].x, // Directly above the target point
+					y: points[i].y - controlDistance * 0.5 // Close approach from above
 				};
 			} else {
+				// Middle points - flow at specified angle through the point
 				const prev = points[i - 1];
 				const next = points[i + 1];
 				
+				// Calculate distances for proportional control
 				const prevDistance = Math.sqrt(Math.pow(points[i].x - prev.x, 2) + Math.pow(points[i].y - prev.y, 2));
 				const nextDistance = Math.sqrt(Math.pow(next.x - points[i].x, 2) + Math.pow(next.y - points[i].y, 2));
 				
+				// Determine if we're going left-to-right or right-to-left based on position in sequence
 				const isEven = i % 2 === 0;
-				const flowDirection = isEven ? 1 : -1;
+				const flowDirection = isEven ? 1 : -1; // Even indices flow right, odd flow left
 				
+				// Control distances based on adjacent point distances - extend much further
 				const leftControlDistance = prevDistance * tension * 0.7;
 				const rightControlDistance = nextDistance * tension * 0.7;
 				
 				if (flowDirection > 0) {
+					// Flowing left to right at specified angle
 					cp1 = { 
 						x: points[i].x - Math.cos(angleRadians) * leftControlDistance, 
 						y: points[i].y - Math.sin(angleRadians) * leftControlDistance
@@ -520,6 +181,7 @@ Red Sea`.split("\n")
 						y: points[i].y + Math.sin(angleRadians) * rightControlDistance
 					};
 				} else {
+					// Flowing right to left at specified angle (flip direction)
 					cp1 = { 
 						x: points[i].x + Math.cos(angleRadians) * leftControlDistance, 
 						y: points[i].y + Math.sin(angleRadians) * leftControlDistance
@@ -534,6 +196,7 @@ Red Sea`.split("\n")
 			controlPoints.push({ cp1, cp2 });
 		}
 		
+		// Build the smooth path
 		let path = `M ${points[0].x} ${points[0].y}`;
 		
 		for (let i = 1; i < points.length; i++) {
@@ -549,6 +212,7 @@ Red Sea`.split("\n")
 	function getPointAlongPath(points: Array<{ x: number; y: number }>, percentage: number) {
 		if (points.length < 2) return { x: 0, y: 0, angle: 0 };
 		
+		// Generate the same control points as the path
 		const tension = 1.2;
 		const pointAngles = [0, 0, -10, -10, -10, 0, 0];
 		const controlPoints = [];
@@ -618,19 +282,23 @@ Red Sea`.split("\n")
 			controlPoints.push({ cp1, cp2 });
 		}
 		
+		// Calculate which segment and position within that segment
 		const segmentCount = points.length - 1;
 		const segmentPercentage = percentage * segmentCount;
 		const segmentIndex = Math.floor(segmentPercentage);
 		const t = segmentPercentage - segmentIndex;
 		
+		// Clamp to valid range
 		const clampedIndex = Math.min(segmentIndex, segmentCount - 1);
 		const clampedT = clampedIndex === segmentIndex ? t : 1;
 		
+		// Get the Bézier curve points for this segment
 		const p0 = points[clampedIndex];
 		const p1 = controlPoints[clampedIndex].cp2;
 		const p2 = controlPoints[clampedIndex + 1].cp1;
 		const p3 = points[clampedIndex + 1];
 		
+		// Calculate position on cubic Bézier curve
 		const x = Math.pow(1 - clampedT, 3) * p0.x + 
 				  3 * Math.pow(1 - clampedT, 2) * clampedT * p1.x + 
 				  3 * (1 - clampedT) * Math.pow(clampedT, 2) * p2.x + 
@@ -641,6 +309,7 @@ Red Sea`.split("\n")
 				  3 * (1 - clampedT) * Math.pow(clampedT, 2) * p2.y + 
 				  Math.pow(clampedT, 3) * p3.y;
 		
+		// Calculate tangent for rotation
 		const dx = 3 * Math.pow(1 - clampedT, 2) * (p1.x - p0.x) + 
 				   6 * (1 - clampedT) * clampedT * (p2.x - p1.x) + 
 				   3 * Math.pow(clampedT, 2) * (p3.x - p2.x);
@@ -651,7 +320,154 @@ Red Sea`.split("\n")
 		
 		let angle = Math.atan2(dy, dx) * 180 / Math.PI;
 		
+		// Keep the plane oriented to follow the curve naturally
+		// Allow flipping but ensure it's always pointing in the direction of travel
+		
 		return { x, y, angle };
+	}
+
+
+
+
+	let showVideoPopup = false;
+	
+	// Dice functionality state
+	let showDice = false;
+	let diceNumbers = [1, 1, 1]; // Default dice values
+	let showDone = false;
+	let isRolling = false;
+	let ideaText = "";
+	let isTyping = false;
+	
+	// Generate ticker text from cities array (constant)
+	const tickerText = cities.join(" • ");
+
+	// Particle system
+	let particles: Array<{ id: number; x: number; y: number; opacity: number; rotation: number; velocityY: number; velocityX: number; scale: number }> = [];
+	let particleIdCounter = 0;
+	let particleContainer: HTMLElement;
+	let isTabVisible = true;
+	const particleSpeedScale = 0.6;
+
+	function openVideoPopup() {
+		console.log("HERE")
+		// Check if screen is small (mobile/tablet)
+		if (window.innerWidth <= 768) {
+			// Open video directly in new tab for small screens
+			window.open('https://www.youtube.com/watch?v=O44y8TeJrNE', '_blank');
+		} else {
+			// Show popup for larger screens
+			showVideoPopup = true;
+		}
+	}
+
+	function closeVideoPopup() {
+		showVideoPopup = false;
+	}
+
+
+
+	async function typeText(text: string) {
+		isTyping = true;
+		ideaText = "";
+		
+		for (let i = 0; i <= text.length; i++) {
+			ideaText = text.slice(0, i);
+			await new Promise(resolve => setTimeout(resolve, 20));
+		}
+		
+		isTyping = false;
+	}
+
+	async function fetchIdea(): Promise<string> {
+		let attempt = 0;
+		const maxAttempts = 5;
+		
+		while (attempt < maxAttempts) {
+			try {
+				const response = await fetch('/api/idea', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					}
+				});
+				
+				if (!response.ok) {
+					if (response.status === 500) {
+						throw new Error(`Server error: ${response.status}`);
+					} else {
+						// Don't retry on non-500 errors
+						return "How about a game where you collect magical crystals to save a mysterious floating world?";
+					}
+				}
+				
+				const data = await response.json();
+				return data.idea;
+			} catch (error) {
+				attempt++;
+				console.warn(`Attempt ${attempt} failed:`, error);
+				
+				if (attempt >= maxAttempts) {
+					return "How about a game where you collect magical crystals to save a mysterious floating world?";
+				}
+				
+				// Wait before retrying
+				await new Promise(resolve => setTimeout(resolve, 1000));
+			}
+		}
+		
+		return "How about a game where you collect magical crystals to save a mysterious floating world?";
+	}
+
+	async function dreamIdea() {
+		if (isRolling) return;
+		
+		isRolling = true;
+		showDone = false;
+		showDice = true;
+		ideaText = "";
+		
+		const startTime = Date.now();
+		const minDuration = 1000;
+		let fetchComplete = false;
+		let fetchResult: string = "";
+		
+		// Start fetch and dice animation concurrently
+		const fetchPromise = fetchIdea().then(result => {
+			fetchResult = result;
+			fetchComplete = true;
+			return result;
+		});
+		
+		// Dice animation loop
+		const dicePromise = (async () => {
+			while (true) {
+				const elapsed = Date.now() - startTime;
+				
+				// Stop if both minimum time has passed AND fetch is complete
+				if (elapsed >= minDuration && fetchComplete) {
+					break;
+				}
+				
+				diceNumbers = [
+					Math.floor(Math.random() * 6) + 1,
+					Math.floor(Math.random() * 6) + 1,
+					Math.floor(Math.random() * 6) + 1
+				];
+				
+				await new Promise(resolve => setTimeout(resolve, 100));
+			}
+		})();
+		
+		// Wait for both to complete
+		await Promise.all([fetchPromise, dicePromise]);
+		
+		showDone = false;
+		showDice = false;
+		isRolling = false;
+		
+		// Start typing animation with the fetched idea
+		await typeText(fetchResult);
 	}
 
 	function setupPlaneAnimation() {
@@ -660,8 +476,10 @@ Red Sea`.split("\n")
 		
 		if (!container || !airplane) return;
 		
+		// Create an object to animate progress
 		const planeProgress = { value: 0 };
 		
+		// Get points for path calculation
 		const getPoints = () => {
 			const containerRect = container.getBoundingClientRect();
 			const points: Array<{ x: number; y: number }> = [];
@@ -679,6 +497,7 @@ Red Sea`.split("\n")
 			return points;
 		};
 
+		// Update function that gets called as progress changes
 		const updatePlanePosition = () => {
 			const points = getPoints();
 			if (points.length > 0) {
@@ -695,15 +514,18 @@ Red Sea`.split("\n")
 			}
 		};
 
+		// Create animation timeline
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: container,
 				start: "top 100%",
 				end: "bottom 100%",
 				scrub: 1.5,
+				// markers: true,
 			}
 		});
 
+		// Animate the progress value
 		tl.to(planeProgress, {
 			value: 1,
 			duration: 1,
@@ -712,6 +534,67 @@ Red Sea`.split("\n")
 		});
 
 		return tl;
+	}
+
+	function createParticle () {
+		if (!particleContainer || !isTabVisible) return;
+		
+		// Find the visible button - mobile first, then desktop
+		const buttons = document.querySelectorAll('a[href="https://forms.hackclub.com/daydream-stickers"]');
+		let button = null;
+		
+		for (const btn of buttons) {
+			const styles = window.getComputedStyle(btn);
+			if (styles.display !== 'none') {
+				button = btn;
+				break;
+			}
+		}
+		
+		if (!button) return;
+		
+		const buttonRect = button.getBoundingClientRect();
+		const containerRect = particleContainer.getBoundingClientRect();
+		
+		// Spawn particles with 16px inset from edges (about half border radius)
+		const edgeInset = 16;
+		const spawnWidth = buttonRect.width - (edgeInset * 2);
+		const spawnOffset = edgeInset;
+		
+		const particle = {
+			id: particleIdCounter++,
+			x: buttonRect.left - containerRect.left + spawnOffset + Math.random() * spawnWidth,
+			y: buttonRect.top + buttonRect.height / 2 - containerRect.top,
+			opacity: 1,
+			rotation: Math.random() * 360,
+			velocityY: (0.5 + Math.random() * 0.3) * particleSpeedScale,
+			velocityX: 0,
+			scale: 0.7 + Math.random() * 0.5
+		};
+		
+		particles = [...particles, particle];
+	}
+
+	function updateParticles() {
+		if (!isTabVisible) return;
+		
+		particles = particles.map(particle => ({
+			...particle,
+			x: particle.x + particle.velocityX,
+			y: particle.y + particle.velocityY,
+			opacity: particle.opacity - 0.01,
+			rotation: particle.rotation + 2,
+			scale: particle.scale
+		})).filter(particle => particle.opacity > 0);
+	}
+
+	function animateParticles() {
+		updateParticles();
+		requestAnimationFrame(animateParticles);
+	}
+
+	function handleVisibilityChange() {
+		isTabVisible = !document.hidden;
 	}
 
 	function updatePath() {
@@ -723,6 +606,7 @@ Red Sea`.split("\n")
 		const containerRect = container.getBoundingClientRect();
 		const points: Array<{ x: number; y: number }> = [];
 		
+		// Get points in order by data-point attribute
 		const pointIds = ["0", "0.5", "1", "2", "3", "4", "5"];
 		pointIds.forEach(id => {
 			const element = document.querySelector(`[data-point="${id}"]`);
@@ -739,20 +623,13 @@ Red Sea`.split("\n")
 		pathElement.setAttribute("d", pathData);
 	}
 
-	// Generate ticker text from cities array
-	const tickerText = cities.join(" • ");
-
 	onMount(() => {
 		console.log('User city:', data.userCity);
 		
 		// Register GSAP plugins
 		gsap.registerPlugin(ScrollTrigger);
 		
-		// Start countdown timer
-		updateCountdown();
-		const countdownInterval = setInterval(updateCountdown, 1000);
-		
-		// Setup parallax effects
+		// Setup parallax for cloudy background
 		const cloudyBg = document.querySelector('.cloudy-bg-parallax');
 		if (cloudyBg) {
 			gsap.to(cloudyBg, {
@@ -767,6 +644,7 @@ Red Sea`.split("\n")
 			});
 		}
 		
+		// Setup parallax for hero UI elements
 		const heroUI = document.querySelector('.hero-ui-parallax');
 		if (heroUI) {
 			gsap.to(heroUI, {
@@ -781,6 +659,7 @@ Red Sea`.split("\n")
 			});
 		}
 		
+		// Setup parallax for back buildings (slower movement)
 		const backBuildings = document.querySelector('.buildings-back-parallax');
 		if (backBuildings) {
 			gsap.to(backBuildings, {
@@ -795,6 +674,7 @@ Red Sea`.split("\n")
 			});
 		}
 		
+		// Setup parallax for front buildings (faster movement)
 		const frontBuildings = document.querySelector('.buildings-front-parallax');
 		if (frontBuildings) {
 			gsap.to(frontBuildings, {
@@ -825,9 +705,6 @@ Red Sea`.split("\n")
 		// Handle tab visibility changes
 		document.addEventListener("visibilitychange", handleVisibilityChange);
 		
-		// Add scroll event listener
-		window.addEventListener("scroll", handleScroll);
-		
 		// Start particle animation
 		animateParticles();
 		
@@ -836,8 +713,6 @@ Red Sea`.split("\n")
 		
 		// Cleanup
 		return () => {
-			clearInterval(countdownInterval);
-			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("resize", handleResize);
 			document.removeEventListener("visibilitychange", handleVisibilityChange);
 			clearInterval(particleInterval);
@@ -939,9 +814,7 @@ Red Sea`.split("\n")
 	<div class="buildings-front-parallax absolute top-0 left-0 w-full h-full bg-[url(/buildings-front.png)] bg-no-repeat bg-contain pointer-events-none lg:-translate-y-15"></div>
 	<!-- brush texture clipped to front buildings -->
 	<div class="absolute top-0 left-0 w-full h-full bg-[url('brushstroking.png')] bg-size-[100vw_100vh] bg-repeat pointer-events-none opacity-100 lg:-translate-y-15 bg-center mix-blend-overlay" style="mask-image: url('/buildings-front.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center top; -webkit-mask-image: url('/buildings-front.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center top;"></div>
-	
-	<!-- Enhanced Hero Section with Countdown Timer -->
-	<div class="hero-ui-parallax flex flex-col items-center justify-center text-center relative z-30 -translate-y-2">
+	<div class="hero-ui-parallax flex flex-col items-center justify-center text-center relative z-5 -translate-y-2">
 		<div class="inline-block relative">
 			<div class="h-12"></div> 
 			<!-- space for the ship -->
@@ -950,9 +823,9 @@ Red Sea`.split("\n")
 			>
 				September 27th & 28th, 2025
 			</h2>
-			<img src="/red-sea/daydream.png" alt="Daydream" class="h-64 mb-6 w-auto object-contain max-w-full px-4" />
+			<img src="daydream.png" alt="Daydream" class="h-40 mb-6 w-auto object-contain max-w-full px-4" />
 			<a href="https://hackclub.com" class="absolute top-0 -right-6 max-sm:right-0 max-sm:scale-80 animate-hover ![animation-delay:0.9s] ![--hover:-0.2rem]">
-				<img src="/flag-plane.png" alt="Hack Club" class="h-28">
+				<img src="flag-plane.png" alt="Hack Club" class="h-28">
 			</a>
 		</div>
 		<div class="relative inline-block px-4">
@@ -973,64 +846,7 @@ Red Sea`.split("\n")
 			</h4>
 		</div>
 		
-		<!-- Enhanced Countdown Timer -->
-		{#if showCountdown}
-			<div class="mt-8 mb-4 bg-white/20 backdrop-blur-sm rounded-2xl p-6 border-2 border-white/30 shadow-lg">
-				<h5 class="text-lg font-serif text-[#487DAB] mb-4">Event starts in:</h5>
-				<div class="flex gap-4 justify-center items-center mb-4">
-					<div class="text-center">
-						<div class="text-3xl font-bold text-[#487DAB] bg-white/50 rounded-lg px-3 py-2 min-w-[60px]">{timeLeft.days}</div>
-						<div class="text-sm text-[#487DAB] mt-1">Days</div>
-					</div>
-					<div class="text-2xl text-[#487DAB] font-bold">:</div>
-					<div class="text-center">
-						<div class="text-3xl font-bold text-[#487DAB] bg-white/50 rounded-lg px-3 py-2 min-w-[60px]">{timeLeft.hours}</div>
-						<div class="text-sm text-[#487DAB] mt-1">Hours</div>
-					</div>
-					<div class="text-2xl text-[#487DAB] font-bold">:</div>
-					<div class="text-center">
-						<div class="text-3xl font-bold text-[#487DAB] bg-white/50 rounded-lg px-3 py-2 min-w-[60px]">{timeLeft.minutes}</div>
-						<div class="text-sm text-[#487DAB] mt-1">Minutes</div>
-					</div>
-					<div class="text-2xl text-[#487DAB] font-bold">:</div>
-					<div class="text-center">
-						<div class="text-3xl font-bold text-[#487DAB] bg-white/50 rounded-lg px-3 py-2 min-w-[60px]">{timeLeft.seconds}</div>
-						<div class="text-sm text-[#487DAB] mt-1">Seconds</div>
-					</div>
-				</div>
-				
-				<!-- Progress Bar -->
-				<div class="w-full bg-white/30 rounded-full h-3 overflow-hidden">
-					<div 
-						class="bg-gradient-to-r from-pink to-pink-dark h-full rounded-full transition-all duration-1000 ease-out"
-						style="width: {countdownProgress}%"
-					></div>
-				</div>
-				<div class="text-center text-sm text-[#487DAB] mt-2">
-					{Math.round(countdownProgress)}% closer to the event!
-				</div>
-			</div>
-		{/if}
-		
-		<!-- Prominent Registration Button -->
-		<div class="mt-8 mb-6 relative z-30">
-			<a 
-				href={signupLink} 
-				target="_blank" 
-				rel="noopener noreferrer"
-				class="inline-flex items-center gap-3 bg-gradient-to-r from-pink to-pink-dark text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 border-2 border-white/20 hover:border-white/40"
-			>
-				<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-				</svg>
-				Register Now - It's Free!
-			</a>
-			<p class="text-center text-[#487DAB] mt-2 text-sm opacity-90">Join 100+ students for an amazing game development experience!</p>
-		</div>
-		
-		<div class="relative z-30">
-			<ParticipantSignUp {signupLink} {eventName} />
-		</div>
+		<ParticipantSignUp {eventName} />
 	</div>
 
 	<!-- <img src="hot-air-balloon.png" alt="" class="absolute w-1/8 right-32 bottom-40 z-20"> -->
@@ -1059,9 +875,9 @@ Red Sea`.split("\n")
 	<img src="/clouds-top-left-bg.svg" alt="" class="absolute left-0 w-3/12 -bottom-12  translate-y-1/2">
 	<div class="absolute left-0 w-3/12 -bottom-12 translate-y-1/2 bg-[url('brushstroking.png')] bg-size-[100vw_100vh] bg-repeat mix-blend-overlay opacity-60 pointer-events-none h-full" style="mask-image: url('/clouds-top-left-bg.svg'); mask-size: contain; mask-repeat: no-repeat; mask-position: center; -webkit-mask-image: url('/clouds-top-left-bg.svg'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;"></div>
 	
-	<img src="/clouds-top-middle.png" alt="" class="absolute left-5/12 -translate-x-1/2 w-7/12 -bottom-24 z-10 pointer-events-none">
-	<img src="/clouds-top-right.png" alt="" class="absolute right-0 w-1/2 -bottom-12 translate-y-1/2 z-10 pointer-events-none">
-	<img src="/clouds-top-left.png" alt="" class="absolute left-0 w-3/12 -bottom-12  translate-y-1/2 z-10 pointer-events-none">
+	<img src="/clouds-top-middle.png" alt="" class="absolute left-5/12 -translate-x-1/2 w-7/12 -bottom-24 z-20 pointer-events-none">
+	<img src="/clouds-top-right.png" alt="" class="absolute right-0 w-1/2 -bottom-12 translate-y-1/2 z-20 pointer-events-none">
+	<img src="/clouds-top-left.png" alt="" class="absolute left-0 w-3/12 -bottom-12  translate-y-1/2 z-20 pointer-events-none">
 	
 
 	<!-- Desktop stickers button (bottom left) -->
@@ -1120,56 +936,7 @@ Red Sea`.split("\n")
 
 </div>
 
-<!-- Call to Action Section -->
-<div class="w-full bg-gradient-to-r from-pink to-pink-dark py-16 px-8 relative z-30">
-	<div class="max-w-4xl mx-auto text-center">
-		<h2 class="text-4xl font-serif text-white mb-6">
-			Ready to Create Something Amazing?
-		</h2>
-		<p class="text-xl text-white/90 mb-8 leading-relaxed">
-			Join 100+ students for an unforgettable day of game development, learning, and fun. 
-			No experience required - we'll teach you everything you need to know!
-		</p>
-		<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-			<a 
-				href={signupLink} 
-				target="_blank" 
-				rel="noopener noreferrer"
-				class="inline-flex items-center gap-3 bg-white text-pink px-8 py-4 rounded-full text-xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-			>
-				<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-				</svg>
-				Register Now - It's Free!
-			</a>
-			<a 
-				href={contactLink}
-				class="inline-flex items-center gap-3 bg-transparent text-white border-2 border-white px-8 py-4 rounded-full text-xl font-bold hover:bg-white hover:text-pink transition-all duration-200"
-			>
-				<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-					<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-				</svg>
-				Contact Us
-			</a>
-		</div>
-		<div class="mt-8 grid grid-cols-3 gap-4 text-white/80">
-			<div class="text-center">
-				<div class="text-2xl font-bold">100+</div>
-				<div class="text-sm">Students</div>
-			</div>
-			<div class="text-center">
-				<div class="text-2xl font-bold">12</div>
-				<div class="text-sm">Hours</div>
-			</div>
-			<div class="text-center">
-				<div class="text-2xl font-bold">2</div>
-				<div class="text-sm">Workshops</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Enhanced Schedule Container -->
+<!-- Schedule Container -->
 <div class="w-full bg-[#FCEFC5] py-16 px-8 flex justify-center">
 	<div class="relative max-w-4xl w-full">
 		<!-- Billboard Container -->
@@ -1195,100 +962,26 @@ Red Sea`.split("\n")
 				<!-- Brush texture overlay for content -->
 				<div class="absolute top-0 left-0 w-full h-full bg-[url('brushstroking.png')] bg-size-[100vw_100vh] bg-repeat mix-blend-overlay opacity-60 pointer-events-none"></div>
 				
-				<!-- Enhanced Schedule Content -->
+				<!-- Schedule Content -->
 				<div class="relative z-10">
-					<!-- Schedule for Single Day Event -->
 					{#each scheduleData as day, dayIndex}
-							<div class="bg-white/50 py-6 -mx-8 rounded-lg">
-								<h3 class="text-2xl font-sans font-bold text-[#335969] mb-6 text-center px-8 max-sm:text-xl max-sm:px-4">
-									{day.title}
-								</h3>
-								
-								<div class="max-w-4xl mx-auto px-4">
-									{#each day.items as item, index}
-										<div class="bg-white/30 rounded-lg p-4 mb-4 hover:bg-white/50 transition-all duration-200 cursor-pointer" 
-											 on:click={() => currentWorkshop = currentWorkshop === index ? null : index}
-											 on:keydown={(e) => e.key === 'Enter' && (currentWorkshop = currentWorkshop === index ? null : index)}
-											 role="button"
-											 tabindex="0"
-											 aria-expanded={currentWorkshop === index}
-											 aria-label="Toggle event details for {item.event}">
-											<div class="flex items-center justify-between">
-												<div class="flex-1">
-													<div class="flex items-center gap-3">
-														<!-- Event Type Icon -->
-														<div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold
-															{item.type === 'workshop' ? 'bg-blue-500' : 
-															 item.type === 'activity' ? 'bg-green-500' : 
-															 item.type === 'break' ? 'bg-orange-500' : 
-															 item.type === 'presentation' ? 'bg-purple-500' : 'bg-gray-500'}">
-															{item.type === 'workshop' ? 'W' : 
-															 item.type === 'activity' ? 'A' : 
-															 item.type === 'break' ? 'B' : 
-															 item.type === 'presentation' ? 'P' : '•'}
-														</div>
-														<div>
-															<h4 class="text-lg font-sans font-bold text-[#335969]">{item.event}</h4>
-															<div class="flex items-center gap-4 text-sm text-[#477783]">
-																<span class="flex items-center gap-1">
-																	<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-																		<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-																	</svg>
-																	{item.time}
-																</span>
-																{#if item.location}
-																	<span class="flex items-center gap-1">
-																		<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-																			<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-																		</svg>
-																		{item.location}
-																	</span>
-																{/if}
-															</div>
-														</div>
-													</div>
-													
-													<!-- Expanded Details -->
-													{#if currentWorkshop === index}
-														<div class="mt-4 pt-4 border-t border-white/30">
-															{#if item.description}
-																<p class="text-[#477783] mb-3">{item.description}</p>
-															{/if}
-															{#if item.speaker}
-																<div class="flex items-center gap-2 text-sm text-[#335969]">
-																	<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-																		<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-																	</svg>
-																	<span class="font-semibold">Speaker:</span> {item.speaker}
-																</div>
-															{/if}
-															<div class="mt-3 flex gap-2">
-																<span class="px-2 py-1 bg-white/50 rounded text-xs font-semibold text-[#335969]">
-																	{(item.type || 'Event').charAt(0).toUpperCase() + (item.type || 'Event').slice(1)}
-																</span>
-																{#if item.location && item.location !== 'Online'}
-																	<span class="px-2 py-1 bg-blue-100 rounded text-xs font-semibold text-blue-800">
-																		In-Person
-																	</span>
-																{:else if item.location === 'Online'}
-																	<span class="px-2 py-1 bg-green-100 rounded text-xs font-semibold text-green-800">
-																		Online
-																	</span>
-																{/if}
-															</div>
-														</div>
-													{/if}
-												</div>
-												<div class="ml-4">
-													<svg class="w-5 h-5 text-[#477783] transition-transform duration-200 {currentWorkshop === index ? 'rotate-180' : ''}" fill="currentColor" viewBox="0 0 24 24">
-														<path d="M7 10l5 5 5-5z"/>
-													</svg>
-												</div>
-											</div>
-										</div>
-									{/each}
-								</div>
+						<div class="bg-white/50 py-6 -mx-8 {dayIndex < scheduleData.length - 1 ? 'mb-8' : ''}">
+							<h3 class="text-2xl font-sans font-bold text-[#335969] mb-6 text-center px-8 max-sm:text-xl max-sm:px-4">
+								{day.title}
+							</h3>
+							
+							<div class="max-w-xl mx-auto px-4">
+								{#each day.items as item, index}
+									<div class="flex items-center justify-between py-2">
+										<span class="text-lg font-sans text-[#477783]">{item.event}</span>
+										<span class="text-lg font-sans text-[#477783]">{item.time}</span>
+									</div>
+									{#if index < day.items.length - 1}
+										<div class="h-[2px] bg-white/30"></div>
+									{/if}
+								{/each}
 							</div>
+						</div>
 					{/each}
 				</div>
 			</div>
@@ -1316,7 +1009,7 @@ Red Sea`.split("\n")
 </div>
 
 {#if sponsorsEnabled}
-<!-- Enhanced Sponsors Section -->
+<!-- Second Billboard Section -->
 <div class="w-full bg-[#FCEFC5] pb-16 pt-6 px-8 flex justify-center">
 	<div class="relative max-w-4xl w-full">
 		<!-- Billboard Container -->
@@ -1324,7 +1017,7 @@ Red Sea`.split("\n")
 			<!-- Header Section -->
 			<div class="w-full bg-[url('/billboard-bg-texture.png')] bg-contain bg-repeat py-6 relative" style="border-bottom: 8px solid #B4B4C5;">
 				<h2 class="text-4xl font-serif text-[#F0F0FF] text-center">
-					Our Amazing Sponsors
+					Sponsors
 				</h2>
 				<!-- Brush texture overlay for header -->
 				<div class="absolute top-0 left-0 w-full h-full bg-[url('brushstroking.png')] bg-size-[100vw_100vh] bg-repeat mix-blend-overlay opacity-60 pointer-events-none"></div>
@@ -1335,47 +1028,51 @@ Red Sea`.split("\n")
 				<!-- Brush texture overlay for content -->
 				<div class="absolute top-0 left-0 w-full h-full bg-[url('brushstroking.png')] bg-size-[100vw_100vh] bg-repeat mix-blend-overlay opacity-60 pointer-events-none"></div>
 				
-				<!-- Enhanced Sponsors Grid -->
+				<!-- Sponsors Grid -->
 				<div class="relative z-10 min-h-40">
 					{#if sponsors.length > 0}
-						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-							{#each sponsors as sponsor}
-								<div class="bg-white/30 rounded-xl p-6 hover:bg-white/50 transition-all duration-300 hover:scale-105 shadow-lg">
-									<div class="text-center">
-										<div class="mb-4">
-											<span class="px-3 py-1 rounded-full text-xs font-bold text-white
-												{sponsor.tier === 'platinum' ? 'bg-gradient-to-r from-gray-400 to-gray-600' :
-												 sponsor.tier === 'gold' ? 'bg-gradient-to-r from-yellow-400 to-yellow-600' :
-												 sponsor.tier === 'silver' ? 'bg-gradient-to-r from-gray-300 to-gray-500' :
-												 'bg-gradient-to-r from-amber-600 to-amber-800'}">
-												{sponsor.tier?.toUpperCase()}
-											</span>
-										</div>
-										<div class="block">
-											<div class="bg-white/50 rounded-lg p-4 h-24 flex items-center justify-center mb-3">
+						<!-- First row (up to 4 sponsors) -->
+						{#if sponsors.length > 4}
+							<div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center mb-8">
+								{#each sponsors.slice(0, 4) as sponsor}
+									<a href={sponsor.url} class="bg-white/20 rounded-lg p-4 w-full h-20 flex items-center justify-center hover:bg-white/40 transition-colors" target="_blank" rel="noopener noreferrer">
+										<img src={sponsor.image} alt={sponsor.name} class="max-w-full max-h-full object-contain">
+									</a>
+								{/each}
+							</div>
+							
+							<!-- Second row (remaining sponsors, centered) -->
+							{#if sponsors.length > 4}
+								<div class="flex justify-center">
+									<div class="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center max-w-2xl">
+										{#each sponsors.slice(4) as sponsor, index}
+											<a href={sponsor.url} 
+												class="bg-white/20 rounded-lg p-4 w-full h-20 flex items-center justify-center hover:bg-white/40 transition-colors {sponsors.slice(4).length === 3 && index === 2 ? 'md:col-span-1 col-span-2 max-w-xs mx-auto' : ''}" 
+												target="_blank" rel="noopener noreferrer">
 												<img src={sponsor.image} alt={sponsor.name} class="max-w-full max-h-full object-contain">
-											</div>
-											<h3 class="font-bold text-[#335969] text-lg mb-2">{sponsor.name}</h3>
-											<p class="text-sm text-[#477783]">
-												Big shoutout to Jukebox for our <a href="https://www.jukeboxprint.com/custom-stickers" target="_blank" rel="noopener noreferrer" class="text-pink hover:text-pink-dark underline">custom stickers</a>!
-											</p>
-										</div>
+											</a>
+										{/each}
 									</div>
 								</div>
-							{/each}
-						</div>
+							{/if}
+						{:else}
+							<!-- Single row for 4 or fewer sponsors -->
+							<div class="flex justify-center">
+								<div class="grid gap-8 items-center justify-items-center max-w-4xl {sponsors.length === 1 ? 'grid-cols-1' : sponsors.length === 2 ? 'grid-cols-1 md:grid-cols-2' : sponsors.length === 3 ? 'grid-cols-2 md:grid-cols-3' : 'grid-cols-2 md:grid-cols-4'}">
+									{#each sponsors as sponsor}
+										<a href={sponsor.url} class="bg-white/20 rounded-lg p-4 w-full h-20 flex items-center justify-center hover:bg-white/40 transition-colors" target="_blank" rel="noopener noreferrer">
+											<img src={sponsor.image} alt={sponsor.name} class="max-w-full max-h-full object-contain">
+										</a>
+									{/each}
+								</div>
+							</div>
+						{/if}
 					{/if}
 					
 					{#if contactLink}
-						<!-- Enhanced Call to action for sponsors -->
-						<div class="mt-12 text-center">
-							<div class="bg-white/40 rounded-xl p-8 max-w-2xl mx-auto">
-								<h3 class="text-2xl font-bold text-[#335969] mb-4">Become a Sponsor</h3>
-								<p class="text-lg text-[#477783] mb-6">Join our amazing sponsors and support the next generation of game developers!</p>
-								<a href={contactLink} class="inline-block bg-pink text-white px-8 py-3 rounded-lg font-bold hover:bg-pink-dark transition-colors shadow-lg hover:shadow-xl">
-									Get in Touch
-								</a>
-							</div>
+						<!-- Call to action for sponsors -->
+						<div class="mt-8 text-center">
+							<p class="text-lg text-[#335969]">Want to sponsor Daydream {eventName}? <a href={contactLink} class="underline hover:text-[#477783] transition-colors">Get in touch</a></p>
 						</div>
 					{/if}
 				</div>
@@ -1413,68 +1110,6 @@ Red Sea`.split("\n")
 	</div>
 </div>
 {/if}
-
-		<!-- Enhanced Features Component -->
-		<EnhancedFeatures {eventName} />
-		
-		<!-- What's New Section -->
-		<div class="w-full bg-gradient-to-b from-[#FEC1CF] to-[#FCEFC5] py-16 px-8">
-			<div class="max-w-4xl mx-auto">
-				<h2 class="text-4xl font-serif text-center text-[#8B4513] mb-12">
-					What's New at Daydream Red Sea
-				</h2>
-				
-				<div class="grid md:grid-cols-2 gap-8">
-					<div class="bg-white/60 rounded-lg p-6 shadow-lg">
-						<div class="flex items-center gap-3 mb-4">
-							<div class="w-12 h-12 bg-pink rounded-full flex items-center justify-center text-white text-xl">
-								🎮
-							</div>
-							<h3 class="text-xl font-bold text-[#335969]">Enhanced Workshops</h3>
-						</div>
-						<p class="text-[#477783] leading-relaxed">
-							We've upgraded our game development workshops with the latest Godot engine features and hands-on coding sessions. Perfect for beginners and experienced developers alike!
-						</p>
-					</div>
-					
-					<div class="bg-white/60 rounded-lg p-6 shadow-lg">
-						<div class="flex items-center gap-3 mb-4">
-							<div class="w-12 h-12 bg-pink rounded-full flex items-center justify-center text-white text-xl">
-								🏆
-							</div>
-							<h3 class="text-xl font-bold text-[#335969]">Exciting Prizes Coming</h3>
-						</div>
-						<p class="text-[#477783] leading-relaxed">
-							We're working on some amazing prizes for the best games! Stay tuned for announcements about what you could win for your creative projects.
-						</p>
-					</div>
-					
-					<div class="bg-white/60 rounded-lg p-6 shadow-lg">
-						<div class="flex items-center gap-3 mb-4">
-							<div class="w-12 h-12 bg-pink rounded-full flex items-center justify-center text-white text-xl">
-								🤝
-							</div>
-							<h3 class="text-xl font-bold text-[#335969]">Team Building Activities</h3>
-						</div>
-						<p class="text-[#477783] leading-relaxed">
-							New icebreaker activities and team formation sessions to help you connect with fellow developers and form the perfect team for your game project.
-						</p>
-					</div>
-					
-					<div class="bg-white/60 rounded-lg p-6 shadow-lg">
-						<div class="flex items-center gap-3 mb-4">
-							<div class="w-12 h-12 bg-pink rounded-full flex items-center justify-center text-white text-xl">
-								🍕
-							</div>
-							<h3 class="text-xl font-bold text-[#335969]">Enhanced Catering</h3>
-						</div>
-						<p class="text-[#477783] leading-relaxed">
-							We've improved our food and refreshment options to keep you energized throughout the 12-hour event. Healthy snacks and delicious meals included!
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
 
 <!-- Gamejam Text Section -->
 <div class="w-full bg-[#FCEFC5] flex justify-center py-16 relative overflow-hidden max-h-[400px]">
@@ -1581,7 +1216,7 @@ Red Sea`.split("\n")
 			<!-- Map container with cloudy edges -->
 			<div class="relative w-full h-156 overflow-hidden bg-transparent">
 				<iframe 
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4393.223885058621!2d33.804376376122384!3d27.22416934663533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1452877818029b35%3A0xf3a85e8b5fa0ecd7!2sSunrise%20International%20School!5e1!3m2!1sen!2seg!4v1756900426781!5m2!1sen!2seg"
+					src={eventAddress ? "/event-map?location=" + encodeURIComponent(eventAddress) : "/map"}
 					class="w-full h-full border-0 bg-[#acd4e0]"
 					style="
 						mask-image: 
@@ -1699,6 +1334,17 @@ Red Sea`.split("\n")
 		">
 			<!-- frame around content -->
 			<div class="absolute inset-0 bg-[url(/macintosh-frame.png)] bg-size-[100%_100%]"></div>
+
+			<!-- Hack Club logo on border -->
+			<img 
+				src="/macintosh-hc-logo.png" 
+				alt="Hack Club logo" 
+				class="absolute w-12 h-12 pointer-events-none z-20" 
+				style="
+					bottom: calc(-1 * clamp(232px, 29vw, 464px) + 8rem);
+					left: 5%;
+				"
+			>
 			
 			<!-- Brushstroke overlay on border -->
 			<div 
@@ -1891,74 +1537,6 @@ Red Sea`.split("\n")
 
 <Footer />
 
-<!-- Floating Action Menu -->
-<div class="fixed bottom-6 left-6 z-50">
-	<button 
-		class="bg-pink text-white p-4 rounded-full shadow-lg hover:bg-pink-dark transition-all duration-200 hover:scale-110"
-		on:click={() => showFloatingMenu = !showFloatingMenu}
-		aria-label="Quick actions menu"
-	>
-		{#if showFloatingMenu}
-			<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-			</svg>
-		{:else}
-			<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-				<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
-			</svg>
-		{/if}
-	</button>
-	
-	{#if showFloatingMenu}
-		<div class="absolute bottom-16 left-0 space-y-2">
-			<a 
-				href={signupLink} 
-				target="_blank" 
-				rel="noopener noreferrer"
-				class="block bg-white text-pink p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-200 hover:scale-110"
-				aria-label="Register for the event"
-			>
-				<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-				</svg>
-			</a>
-			<a 
-				href={directionsURL} 
-				target="_blank" 
-				rel="noopener noreferrer"
-				class="block bg-white text-pink p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-200 hover:scale-110"
-				aria-label="Get directions to the venue"
-			>
-				<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-					<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-				</svg>
-			</a>
-			<a 
-				href={contactLink} 
-				class="block bg-white text-pink p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-200 hover:scale-110"
-				aria-label="Contact the organizers"
-			>
-				<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-					<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-				</svg>
-			</a>
-		</div>
-	{/if}
-</div>
-
-<!-- Back to Top Button -->
-{#if showBackToTop}
-	<button 
-		class="fixed bottom-6 right-20 z-50 bg-pink text-white p-4 rounded-full shadow-lg hover:bg-pink-dark transition-all duration-200 hover:scale-110"
-		on:click={scrollToTop}
-		aria-label="Back to top"
-	>
-		<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-			<path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-		</svg>
-	</button>
-{/if}
-
 <!-- Video Popup Modal -->
 {#if showVideoPopup}
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -1995,41 +1573,4 @@ Red Sea`.split("\n")
 	</div>
 {/if}
 
-<!-- Notification System -->
-{#if showNotification}
-	<div class="fixed top-6 right-6 z-60 max-w-sm">
-		<div class="bg-white rounded-lg shadow-lg border-l-4 p-4 {notificationType === 'success' ? 'border-green-500' : notificationType === 'warning' ? 'border-yellow-500' : 'border-blue-500'}">
-			<div class="flex items-center">
-				<div class="flex-shrink-0">
-					{#if notificationType === 'success'}
-						<svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-							<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-						</svg>
-					{:else if notificationType === 'warning'}
-						<svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-							<path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-						</svg>
-					{:else}
-						<svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-							<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-						</svg>
-					{/if}
-				</div>
-				<div class="ml-3">
-					<p class="text-sm font-medium text-gray-900">{notificationMessage}</p>
-				</div>
-				<div class="ml-auto pl-3">
-					<button 
-						class="text-gray-400 hover:text-gray-600"
-						on:click={() => showNotification = false}
-					>
-						<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-							<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
-						</svg>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-{/if}
 
